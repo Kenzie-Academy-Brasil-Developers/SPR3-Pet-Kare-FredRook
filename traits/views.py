@@ -1,6 +1,3 @@
-from rest_framework.views import APIView, Request, Response, status
-from .models import Trait
-from .serializer import TraitSerializer
+from django.shortcuts import render
 
-
-...
+# Create your views here.

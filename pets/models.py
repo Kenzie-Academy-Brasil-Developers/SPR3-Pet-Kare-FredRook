@@ -2,8 +2,8 @@ from django.db import models
 
 
 class SexChoice(models.TextChoices):
-    MALE = "Macho"
-    FEMALE = "Fêmea"
+    MALE = "Male"
+    FEMALE = "Female"
     NOT_INFORMED = "Not Informed"
 
 
@@ -15,8 +15,12 @@ class Pet(models.Model):
         max_length=20, choices=SexChoice.choices, default=SexChoice.NOT_INFORMED
     )
 
+    group = models.ForeignKey(
+        "groups.Group", on_delete=models.CASCADE, related_name="pets"
+    )
 
-    traits = models.ManyToManyField("traits.Trait", related_name="Pets", default=None)
+    traits = models.ManyToManyField("traits.Trait", related_name="pets")
+
 
 def __repr__(self) -> str:
     return f"<Pet [{self.id}] - [{self.name} [{self.age} [{self.weight} [{self.sex}>"

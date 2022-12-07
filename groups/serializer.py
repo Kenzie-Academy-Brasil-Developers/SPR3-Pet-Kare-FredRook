@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from .models import Group
-from pets.models import Pet
+from rest_framework.validators import UniqueValidator
+
 
 class GroupSerializer(serializers.Serializer):
     id = serializers.IntegerField(read_only=True)
